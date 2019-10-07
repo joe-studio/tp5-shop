@@ -31,19 +31,30 @@ class Route
             'shopGoodsGoods/update'            =>  ['\joeStudio\shop\controller\shopGoodsGoods@goodsUpdate',['method'=>'post']],
             'shopGoodsGoods/trueDel'           =>  ['\joeStudio\shop\controller\shopGoodsGoods@goodsTrueDel',['method'=>'post']],
 
-            //商城图片制器路由
+            //商品轮播图片制器路由
             'shopGoodsImage/add'               =>  ['\joeStudio\shop\controller\shopGoodsImage@imageAdd',['method'=>'get']],
             'shopGoodsImage/insert'            =>  ['\joeStudio\shop\controller\shopGoodsImage@imageInsert',['method'=>'post']],
             'shopGoodsImage/show'              =>  ['\joeStudio\shop\controller\shopGoodsImage@imageShow',['method'=>'get']],
             'shopGoodsImage/edit'              =>  ['\joeStudio\shop\controller\shopGoodsImage@imageEdit',['method'=>'get']],
             'shopGoodsImage/update'            =>  ['\joeStudio\shop\controller\shopGoodsImage@imageUpdate',['method'=>'post']],
             'shopGoodsImage/trueDel'           =>  ['\joeStudio\shop\controller\shopGoodsImage@imageTrueDel',['method'=>'post']],
-            'shopGoodsImage/imageUpload'           =>  ['\joeStudio\shop\controller\shopGoodsGoods@imageUpload',['method'=>'post']],
+            'shopGoodsImage/imageUpload'           =>  ['\joeStudio\shop\controller\shopGoodsImage@imageUpload',['method'=>'post']],
 
-            //商品图片列表路由
-            'shopGoodsGoods/imageList'           =>  ['\joeStudio\shop\controller\shopGoodsGoods@imageList',['method'=>'get']],
-            'shopGoodsGoods/imageUpload'           =>  ['\joeStudio\shop\controller\shopGoodsGoods@imageUpload',['method'=>'post']],
-            'shopGoodsGoods/imageAdd'           =>  ['\joeStudio\shop\controller\shopGoodsGoods@imageAdd',['method'=>'post']],
+            //商品详情图片制器路由
+            'shopGoodsDetailsImage/add'               =>  ['\joeStudio\shop\controller\shopGoodsDetailsImage@imageAdd',['method'=>'get']],
+            'shopGoodsDetailsImage/insert'            =>  ['\joeStudio\shop\controller\shopGoodsDetailsImage@imageInsert',['method'=>'post']],
+            'shopGoodsDetailsImage/show'              =>  ['\joeStudio\shop\controller\shopGoodsDetailsImage@imageShow',['method'=>'get']],
+            'shopGoodsDetailsImage/edit'              =>  ['\joeStudio\shop\controller\shopGoodsDetailsImage@imageEdit',['method'=>'get']],
+            'shopGoodsDetailsImage/update'            =>  ['\joeStudio\shop\controller\shopGoodsDetailsImage@imageUpdate',['method'=>'post']],
+            'shopGoodsDetailsImage/trueDel'           =>  ['\joeStudio\shop\controller\shopGoodsDetailsImage@imageTrueDel',['method'=>'post']],
+            'shopGoodsDetailsImage/imageUpload'           =>  ['\joeStudio\shop\controller\shopGoodsDetailsImage@imageUpload',['method'=>'post']],
+
+            //商品具体价格制器路由
+            'shopGoodsPrice/show'              =>  ['\joeStudio\shop\controller\shopGoodsPrice@show',['method'=>'get']],
+            'shopGoodsPrice/getSpecAttributeList' =>  ['\joeStudio\shop\controller\shopGoodsPrice@getSpecAttributeList',['method'=>'post']],
+            'shopGoodsPrice/getPriceList' =>  ['\joeStudio\shop\controller\shopGoodsPrice@getPriceList',['method'=>'post']],
+            'shopGoodsPrice/getAttributeGroupList' =>  ['\joeStudio\shop\controller\shopGoodsPrice@getAttributeGroupList',['method'=>'get']],
+            'shopGoodsPrice/update'            =>  ['\joeStudio\shop\controller\shopGoodsPrice@update',['method'=>'post']],
 
             //规格分类控制器路由
             'shopSpecCategory/add'       =>  ['\joeStudio\shop\controller\shopSpecCategory@categoryAdd',['method'=>'get']],

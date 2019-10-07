@@ -143,39 +143,4 @@ class ShopGoodsGoods extends Output
         return $output;
     }
 
-    public function imageUpload($data){
-
-        $data = [
-            'id'=>0,
-            'url'=>$data['file'],
-            'sort'=>0
-        ];
-
-        $this->scene('form')->setStatus(false)->setMsg('上传成功')->setData($data)->output();
-    }
-
-    public function imageAdd($data){
-
-        $imageModel = new ShopGoodsImage();
-        $imageUpdate = [];
-
-//        foreach($data['image_list'] as $key => $value){
-//            if(!$value['image_id']){
-//                $imageModel->insert([
-//                    'goods_id'   =>  $data['goods_id'],
-//                    'image_path' =>  $value['image_url'],
-//                    'image_sort' =>  $value['sort']
-//                ]);
-//            }else{
-//                $imageUpdate['image_id'] = $value['image_id'];
-//                $imageUpdate['goods_id'] = $data['goods_id'];
-//                $imageUpdate['image_path'] = $value['image_url'];
-//                $imageUpdate['image_sort'] = $value['sort'];
-//            }
-//        }
-//
-//        $imageUpdate && $imageModel->saveAll($imageUpdate);
-
-        $this->scene('form')->setStatus(false)->setMsg('保存成功')->setData($data)->output();
-    }
 }

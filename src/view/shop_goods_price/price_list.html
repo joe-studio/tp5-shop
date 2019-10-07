@@ -1,0 +1,53 @@
+<thead>
+<tr>
+    {volist name="specList" id="spec2"}
+    <th>{$spec2.spec_name}</th>
+    {/volist}
+    <th>原价</th>
+    <th>折后价</th>
+    <th>图片</th>
+    <th>库存</th>
+    <th>是否显示</th>
+</tr>
+</thead>
+<tbody>
+{volist name='attributeGroupList' id='group' key="index"}
+<tr class="gradeA">
+
+    <input type="hidden" name="priceList[{$index}][spec_category_id]" value="{$specCategoryId}" />
+    <input type="hidden" name="priceList[{$index}][price_id]" value="{$group.price.price_id}" />
+
+    {volist name='$group.attribute_list' id='attribute'  key="index2"}
+    <td>{$attribute.attribute_name}</td>
+    <input type="hidden" name="priceList[{$index}][attribute_id][{$index2}]" value="{$attribute.attribute_id}" />
+    {/volist}
+    <td>
+        <input type="text" name="priceList[{$index}][price_reference]" value="{$group.price.price_reference}" />
+    </td>
+    <td>
+        <input type="text" name="priceList[{$index}][price_discount]"  value="{$group.price.price_discount}" />
+    </td>
+    <td>
+        {if condition="$group.price.price_image_path"}
+        <img src="/{$group.price.price_image_path}" style="width:50px" />
+        {/if}
+        <input  type="file" name="image_{$index}" class="form-control">
+    </td>
+    <td>
+        <input type="text" name="priceList[{$index}][price_sku]"  value="{$group.price.price_sku}" />
+    </td>
+    <td>
+
+        <div class="checkbox i-checks">
+            <input type="checkbox" name="priceList[{$index}][price_status]" {if condition="$group.price.price_status"}checked=""{/if}>
+        </div>
+
+    </td>
+
+</tr>
+{/volist}
+</tbody>
+
+<script>
+    $(".i-checks").iCheck({checkboxClass:"icheckbox_square-green",radioClass:"iradio_square-green",})
+</script>

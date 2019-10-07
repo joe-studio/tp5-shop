@@ -11,7 +11,7 @@ namespace joeStudio\shop\logic;
 use filter\Output;
 use joeStudio\admin\model\Admin;
 
-class ShopGoodsImage extends Output
+class ShopGoodsDetailsImage extends Output
 {
 
     public function __construct(){
@@ -87,7 +87,7 @@ class ShopGoodsImage extends Output
                 ->output();
         }
 
-        $res = $this->model->save($data,['image_id'=>$data['image_id']]);
+        $res = $this->model->save($data,['details_image_id'=>$data['details_image_id']]);
 
         $res ?
             $this->scene('form')->setStatus(true)->setMsg('编辑成功')->output()

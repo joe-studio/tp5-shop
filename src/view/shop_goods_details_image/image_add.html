@@ -1,12 +1,12 @@
 {include file="public/header" /}
-<form action="{:url('shop/shopgoodsimage/insert')}" id="myForm" method="post" class="form-horizontal" enctype="multipart/form-data">
+<form action="{:url('shop/shopgoodsdetailsimage/insert')}" id="myForm" method="post" class="form-horizontal" enctype="multipart/form-data">
 
     <div class="wrapper wrapper-content animated fadeIn">
         <div class="row">
             <div class="col-sm-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>新增轮播图</h5>
+                        <h5>新增详情图</h5>
 
                     </div>
                     <div class="ibox-content">
@@ -82,7 +82,7 @@
 </form>
 <script type="text/javascript">
     var BASE_URL    = '__STATIC__/js/plugins/webuploader';
-    var SERVER_URL  = "{:url('shop/shopgoodsimage/imageUpload')}";
+    var SERVER_URL  = "{:url('shop/shopgoodsdetailsimage/imageUpload')}";
     var TO_DEL      =  "{:url('softDel')}";
     var TO_RESTORE      =  "{:url('restoreDel')}";
     var TO_DELETE      =  "{:url('trueDel')}";

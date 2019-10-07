@@ -1,0 +1,123 @@
+{include file="public/header" /}
+<div class="wrapper wrapper-content animated fadeInRight">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>编辑图片</h5>
+                    <a href="javascript:void(0)" onclick="history.back(-1)" style="float: right">返回上一页</a>
+                </div>
+                <div class="ibox-content">
+                    <form action="{:url('shop/shopgoodsimage/update')}" method="post" id="myForm" data-scene="update" class="form-horizontal">
+
+                        <input type="hidden" name="image_id" value="{$image.image_id}" />
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">商品缩略图(362*362)</label>
+
+                            <div class="col-sm-5">
+                                <div >
+                                    <img id="ImgPr"  src="/{$image.image_path}"  class="form-control" style="width:100px;height:100px">
+                                </div>
+                                <input  type="file" id="up" name="image_path" class="form-control">
+                                <input type="hidden" name="thumb_img_id" value="">
+                            </div>
+                        </div>
+
+                        <div class="hr-line-dashed"></div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">排序</label>
+
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="image_sort" placeholder="0"  value="{$image.image_sort}">
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-2">
+                                <button class="btn btn-primary" type="submit">保存</button>
+                                <a href="javascript:void(0)" class="btn btn-white joe-refresh">重置</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/footer" /}
+
+<script type="text/javascript">
+    var ue = UE.getEditor('editor');
+
+
+    jQuery.fn.extend({
+        uploadPreview: function(opts) {
+            var _self = this,
+                _this = $(this);
+            opts = jQuery.extend({
+                Img: "ImgPr",
+                Width: 100,
+                Height: 100,
+                ImgType: ["gif", "jpeg", "jpg", "bmp", "png"],
+                Callback: function() {}
+            }, opts || {});
+            _self.getObjectURL = function(file) {
+                var url = null;
+                if (window.createObjectURL != undefined) {
+                    url = window.createObjectURL(file)
+                } else if (window.URL != undefined) {
+                    url = window.URL.createObjectURL(file)
+                } else if (window.webkitURL != undefined) {
+                    url = window.webkitURL.createObjectURL(file)
+                }
+                return url
+            };
+            _this.change(function() {
+                if (this.value) {
+                    if (!RegExp("\.(" + opts.ImgType.join("|") + ")$", "i").test(this.value.toLowerCase())) {
+                        alert("选择文件错误,图片类型必须是" + opts.ImgType.join("，") + "中的一种");
+                        this.value = "";
+                        return false
+                    }
+                    //高版本Jquey使用  if ($.support.leadingWhitespace)
+                    if ($.support.leadingWhitespace) { //低版本jquery中使用$.browser.msie
+                        try {
+                            $("#" + opts.Img).attr('src', _self.getObjectURL(this.files[0]))
+                        } catch (e) {
+                            var src = "";
+                            var obj = $("#" + opts.Img);
+                            var div = obj.parent("div")[0];
+                            _self.select();
+                            if (top != self) {
+                                window.parent.document.body.focus()
+                            } else {
+                                _self.blur()
+                            }
+                            src = document.selection.createRange().text;
+                            document.selection.empty();
+                            obj.hide();
+                            obj.parent("div").css({
+                                'filter': 'progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)',
+                                'width': opts.Width + 'px',
+                                'height': opts.Height + 'px'
+                            });
+                            div.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = src
+                        }
+                    } else {
+                        $("#" + opts.Img).attr('src', _self.getObjectURL(this.files[0]))
+                    }
+                    opts.Callback()
+                }
+            })
+        }
+    });
+    $("#up").uploadPreview({
+        Img: "ImgPr"
+    });
+
+
+</script>

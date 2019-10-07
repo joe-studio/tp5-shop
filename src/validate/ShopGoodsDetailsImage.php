@@ -3,7 +3,7 @@ namespace joeStudio\shop\validate;
 
 use think\Validate;
 
-class ShopGoodsImage extends Validate
+class ShopGoodsDetailsImage extends Validate
 {
     protected $output;
 

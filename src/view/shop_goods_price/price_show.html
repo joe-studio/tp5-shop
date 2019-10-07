@@ -1,0 +1,230 @@
+{include file="public/header" /}
+<div class="wrapper wrapper-content animated fadeInRight">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>规格分组</h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="form-horizontal">
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">规格分组</label>
+
+                            <div class="col-sm-10">
+                                <select class="form-control m-b" name="spec_id" onchange="getSpecAttributeList(this)">
+                                    {volist name="specCategoryList" id="category"}
+                                    <option {if condition="$specCategoryId == $category.category_id"}selected=""{/if} value="{$category.category_id}">{$category.category_name}</option>
+                                    {/volist}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div id="spec-attribute-list">
+                            {volist name="specList" id="spec"}
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{$spec.spec_name}</label>
+
+                                <div class="col-sm-10">
+                                    {volist name="$spec.attributeList" id="attribute"}
+                                    <a href="javascript:void(0)" class="btn btn-primary" style="margin-bottom:20px;margin-right:20px">{$attribute.attribute_name}</a>
+                                    {/volist}
+                                </div>
+                            </div>
+                            {/volist}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form action="{:url('shop/shopgoodsprice/update')}" id="myForm" method="post" class="form-horizontal" enctype="multipart/form-data">
+
+        <input type="hidden" name="specCategoryId" value="{$specCategoryId}" />
+
+        <div class="wrapper wrapper-content animated fadeIn">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>新增轮播图</h5>
+
+                        </div>
+                        <div class="ibox-content">
+
+                            <div class="panel-body">
+
+                                <div class="dd">
+                                    <ol class="dd-list">
+
+                                        <li class="dd-item attr-list" data-id="2">
+
+
+                                            <table class="table table-striped table-bordered table-hover "   id="image_list">
+                                                <thead>
+                                                <tr>
+                                                    {volist name="specList" id="spec2"}
+                                                    <th>{$spec2.spec_name}</th>
+                                                    {/volist}
+                                                    <th>原价</th>
+                                                    <th>折后价</th>
+                                                    <th>图片</th>
+                                                    <th>库存</th>
+                                                    <th>是否显示</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                {volist name='attributeGroupList' id='group' key="index"}
+                                                <tr class="gradeA">
+
+                                                    <input type="hidden" name="priceList[{$index}][spec_category_id]" value="{$specCategoryId}" />
+                                                    <input type="hidden" name="priceList[{$index}][price_id]" value="{$group.price.price_id}" />
+
+                                                    {volist name='$group.attribute_list' id='attribute'  key="index2"}
+                                                    <td>{$attribute.attribute_name}</td>
+                                                    <input type="hidden" name="priceList[{$index}][attribute_id][{$index2}]" value="{$attribute.attribute_id}" />
+                                                    {/volist}
+                                                    <td>
+                                                        <input type="text" name="priceList[{$index}][price_reference]" value="{$group.price.price_reference}" />
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="priceList[{$index}][price_discount]"  value="{$group.price.price_discount}" />
+                                                    </td>
+                                                    <td>
+                                                        {if condition="$group.price.price_image_path"}
+                                                        <img src="/{$group.price.price_image_path}" style="width:50px" />
+                                                        {/if}
+                                                        <input  type="file" name="image_{$index}" class="form-control">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="priceList[{$index}][price_sku]"  value="{$group.price.price_sku}" />
+                                                    </td>
+                                                    <td>
+
+                                                            <div class="checkbox i-checks">
+                                                                <input type="checkbox" name="priceList[{$index}][price_status]" {if condition="$group.price.price_status"}checked=""{/if}>
+                                                            </div>
+
+                                                    </td>
+
+                                                </tr>
+                                                {/volist}
+                                                </tbody>
+
+                                            </table>
+                                        </li>
+                                    </ol>
+
+                                </div>
+                            </div>
+
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <div class="col-sm-4 col-sm-offset-2">
+                                    {:token()}
+                                    <input type="hidden" name="goods_id" value="{$Request.param.goods_id}">
+                                    <button class="btn btn-primary" type="submit">保存内容</button>
+                                    <button class="btn btn-white" type="button" onclick="javascript:location.reload();">重置</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </form>
+</div>
+{include file="public/footer" /}
+
+<script>
+    $('#select-all-input').on('click',function(){
+        $('.select-input-checkbox').each(function(){
+
+            if($(this).attr('data-check') == 'checked'){
+                $(this).attr('data-check','');
+                $(this).parent().removeClass('checked');
+            }else if(!$(this).attr('data-check')){
+                $(this).attr('data-check','checked');
+                $(this).parent().addClass('checked');
+            }
+
+        });
+    });
+
+    $('.select-checkbox .iCheck-helper').on('click',function(){
+
+        var input = $(this).parent().children('.select-input-checkbox');
+
+        if(input.attr('data-check') == 'checked'){
+            input.attr('data-check','');
+            input.parent().removeClass('checked');
+        }else if(!input.attr('data-check')){
+            input.attr('data-check','checked');
+            input.parent().addClass('checked');
+        }
+    });
+
+    $('#delete-select-input').on('click',function(){
+
+        var del_id = [];
+
+        $('.select-input-checkbox').each(function(){
+
+            if($(this).attr('data-check') == 'checked'){
+
+                del_id.push($(this).attr('data-id'))
+
+            }
+
+        });
+
+        to_delete($(this),del_id)
+    });
+
+    var TO_DELETE      =  "{:url('shop/shopgoodsimage/truedel')}";
+
+    function getSpecAttributeList(_this){
+        console.log($(_this).val())
+
+        $.ajax({
+            url:"{:url('shop/shopgoodsprice/getSpecAttributeList')}",
+            type:"post",
+            dataType:"html",
+            data:{
+                specCategoryId:$(_this).val()
+            },
+            success:function(res){
+                console.log(res)
+
+                $("#spec-attribute-list").html(res)
+                $("input[name='specCategoryId']").val($(_this).val())
+            }
+        })
+
+
+        $.ajax({
+            url:"{:url('shop/shopgoodsprice/getPriceList')}",
+            type:"post",
+            dataType:"html",
+            data:{
+                specCategoryId:$(_this).val(),
+                goods_id:"{$Request.param.goods_id}"
+            },
+            success:function(res){
+                console.log(res)
+
+                $("#image_list").html(res)
+            }
+        })
+    }
+
+
+
+</script>

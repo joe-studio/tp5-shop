@@ -51,12 +51,5 @@ class ShopGoodsGoods extends Shop
 
         return $this->view->fetch('shop_goods_goods/image_list',$output);
     }
-
-    public function imageUpload(){
-        $this->logic->imageUpload($this->input);
-    }
-
-    public function imageAdd(){
-        $this->logic->imageAdd($this->input);
-    }
+    
 }
