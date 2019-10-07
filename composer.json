@@ -1,0 +1,20 @@
+{
+    "name": "joe-studio/tp5-shop",
+    "minimum-stability": "dev",
+    "require": {
+        "joe-studio/tp5-admin": "v0.0.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "joeStudio\\shop\\": "src/",
+            "joeStudio\\shop\\logic\\": "src/logic/",
+            "joeStudio\\shop\\helper\\": "src/helper/",
+            "joeStudio\\shop\\controller\\": "src/controller/",
+            "joeStudio\\shop\\model\\": "src/model/",
+            "joeStudio\\shop\\validate\\": "src/validate/",
+            "joeStudio\\shop\\config\\": "src/config/",
+            "joeStudio\\shop\\view\\": "src/view/",
+            "joeStudio\\shop\\behavior\\": "src/behavior/"
+        }
+    }
+}
