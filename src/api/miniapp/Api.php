@@ -13,8 +13,6 @@ class Api extends Output
     {
         $this->input = input('post.');
 
-        $this->store_id = $this->input['store_id'];
-
         !input('post.session3rd') && $this->scene('miniApp')->setStatus(false)->setMsg('缺少session3rd')->output();
 
         $this->init_user(input('post.session3rd'));

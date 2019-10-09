@@ -16,7 +16,6 @@ class Advertising extends Api
     public function search(){
 
         $advertisingList = (new ShopAdvertising())->where([
-            'store_id'  =>  $this->store_id,
             'advertising_status'    =>  1
         ])->select();
 
