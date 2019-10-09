@@ -19,6 +19,7 @@ class Api extends Output
     }
 
     public function init_user($session3rd){
+
         Session::init([
             'prefix'         => 'miniApp',
             'type'           => '',

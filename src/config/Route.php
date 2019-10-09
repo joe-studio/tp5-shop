@@ -84,10 +84,15 @@ class Route
         ],
 
         '[api]' =>  [
-            'miniapp/login'      =>  ['\joeStudio\shop\api\miniapp\MiniApp@login',['method'=>'post']],
-            'address/insert'      =>  ['\joeStudio\shop\api\miniapp\MiniApp@login',['method'=>'post']],
-            'address/search'      =>  ['\joeStudio\shop\api\miniapp\Address@search',['method'=>'post']],
-            'advertising/search'      =>  ['\joeStudio\shop\api\miniapp\Advertising@search',['method'=>'post']],
+            'miniapp/login'             =>  ['\joeStudio\shop\api\miniapp\MiniApp@login',['method'=>'post']],
+            'address/insert'            =>  ['\joeStudio\shop\api\miniapp\MiniApp@login',['method'=>'post']],
+            'address/search'            =>  ['\joeStudio\shop\api\miniapp\Address@search',['method'=>'post']],
+            'advertising/search'        =>  ['\joeStudio\shop\api\miniapp\Advertising@search',['method'=>'post']],
+
+            'goods/search'              =>  ['\joeStudio\shop\api\miniapp\Goods@search',['method'=>'post']],
+            'goods/categorySearch'      =>  ['\joeStudio\shop\api\miniapp\Goods@categorySearch',['method'=>'post']],
+            'goods/keywordSearch'      =>  ['\joeStudio\shop\api\miniapp\Goods@keywordSearch',['method'=>'post']],
+            'goods/keywordDelete'      =>  ['\joeStudio\shop\api\miniapp\Goods@keywordDelte',['method'=>'post']],
         ]
 
     ];

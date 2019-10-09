@@ -9,7 +9,7 @@ use joeStudio\admin\logic\Login;
 use think\Model;
 use traits\model\SoftDelete;
 
-class ShopGoodsCategory extends Model
+class ShopGoodsKeyword extends Model
 {
     use SoftDelete;
 
@@ -19,7 +19,7 @@ class ShopGoodsCategory extends Model
     protected $insert = [];
     protected $update = [];
 
-    protected $pk = 'category_id';
+    protected $pk = 'keyword_id';
     protected $delete_time = "delete_time";
 
 }
