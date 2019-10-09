@@ -2,7 +2,8 @@
     "name": "joe-studio/tp5-shop",
     "minimum-stability": "dev",
     "require": {
-        "joe-studio/tp5-admin": "v0.0.3"
+        "joe-studio/tp5-admin": "v0.0.2",
+        "jiaweixs/weapp": "dev-master"
     },
     "autoload": {
         "psr-4": {
@@ -14,7 +15,9 @@
             "joeStudio\\shop\\validate\\": "src/validate/",
             "joeStudio\\shop\\config\\": "src/config/",
             "joeStudio\\shop\\view\\": "src/view/",
-            "joeStudio\\shop\\behavior\\": "src/behavior/"
+            "joeStudio\\shop\\behavior\\": "src/behavior/",
+            "joeStudio\\shop\\api\\": "src/api/",
+            "joeStudio\\shop\\api\\miniapp": "src/api/miniapp"
         }
     }
 }

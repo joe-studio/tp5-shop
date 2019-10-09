@@ -2,6 +2,7 @@
 namespace joeStudio\shop\behavior;
 
 use think\Request;
+use think\Session;
 
 class Input
 {
@@ -10,6 +11,8 @@ class Input
         $require = Request::instance();
 
         $input = strtolower($require->method()) == 'post' ? input('post.') : input();
+
+        Session::get('store_id') && $input['store_id'] = Session::get('store_id');
 
         if($_FILES){
             foreach($_FILES as $key => $uploadFile){

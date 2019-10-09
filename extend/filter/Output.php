@@ -60,6 +60,18 @@ class Output extends Controller
             echo json_encode($res);exit;
         }
 
+        //应用场景 小程序
+        if($this->scene == 'miniApp'){
+
+            $res = [];
+
+            $res['status'] = $this->status;
+            $res['msg'] = $this->msg;
+            $res['data'] = $this->data;
+
+            echo json_encode($res);exit;
+        }
+
         //应用场景 页面跳转
         if($this->scene == 'jump'){
             $this->status ? $this->success($this->msg,$this->url) : $this->error($this->msg,$this->url);

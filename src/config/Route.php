@@ -7,14 +7,6 @@ class Route
 
         '[shop]'   =>  [
 
-            //店铺控制器路由
-            'ShopStoreStore/add'       =>  ['\joeStudio\shop\controller\ShopStoreStore@storeAdd',['method'=>'get']],
-            'ShopStoreStore/insert'    =>  ['\joeStudio\shop\controller\ShopStoreStore@storeInsert',['method'=>'post']],
-            'ShopStoreStore/show'      =>  ['\joeStudio\shop\controller\ShopStoreStore@storeShow',['method'=>'get']],
-            'ShopStoreStore/edit'      =>  ['\joeStudio\shop\controller\ShopStoreStore@storeEdit',['method'=>'get']],
-            'ShopStoreStore/update'    =>  ['\joeStudio\shop\controller\ShopStoreStore@storeUpdate',['method'=>'post']],
-            'ShopStoreStore/trueDel'   =>  ['\joeStudio\shop\controller\ShopStoreStore@storeTrueDel',['method'=>'post']],
-
             //商品分类控制器路由
             'ShopGoodsCategory/add'                     =>  ['\joeStudio\shop\controller\ShopGoodsCategory@categoryAdd',['method'=>'get']],
             'ShopGoodsCategory/insert'                  =>  ['\joeStudio\shop\controller\ShopGoodsCategory@categoryInsert',['method'=>'post']],
@@ -23,7 +15,7 @@ class Route
             'ShopGoodsCategory/update'                  =>  ['\joeStudio\shop\controller\ShopGoodsCategory@categoryUpdate',['method'=>'post']],
             'ShopGoodsCategory/trueDel'                 =>  ['\joeStudio\shop\controller\ShopGoodsCategory@categoryTrueDel',['method'=>'post']],
 
-            //属性控制器路由
+            //商品控制器路由
             'shopGoodsGoods/add'               =>  ['\joeStudio\shop\controller\shopGoodsGoods@goodsAdd',['method'=>'get']],
             'shopGoodsGoods/insert'            =>  ['\joeStudio\shop\controller\shopGoodsGoods@goodsInsert',['method'=>'post']],
             'shopGoodsGoods/show'              =>  ['\joeStudio\shop\controller\shopGoodsGoods@goodsShow',['method'=>'get']],
@@ -87,6 +79,15 @@ class Route
             'shopAdvertising/edit'      =>  ['\joeStudio\shop\controller\shopAdvertising@advertisingEdit',['method'=>'get']],
             'shopAdvertising/update'    =>  ['\joeStudio\shop\controller\shopAdvertising@advertisingUpdate',['method'=>'post']],
             'shopAdvertising/trueDel'   =>  ['\joeStudio\shop\controller\shopAdvertising@advertisingTrueDel',['method'=>'post']],
+
+
+        ],
+
+        '[api]' =>  [
+            'miniapp/login'      =>  ['\joeStudio\shop\api\miniapp\MiniApp@login',['method'=>'post']],
+            'address/insert'      =>  ['\joeStudio\shop\api\miniapp\MiniApp@login',['method'=>'post']],
+            'address/search'      =>  ['\joeStudio\shop\api\miniapp\Address@search',['method'=>'post']],
+            'advertising/search'      =>  ['\joeStudio\shop\api\miniapp\Advertising@search',['method'=>'post']],
         ]
 
     ];
